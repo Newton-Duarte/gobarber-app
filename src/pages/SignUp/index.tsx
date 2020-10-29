@@ -15,6 +15,8 @@ import { FormHandles } from '@unform/core';
 
 import * as Yup from 'yup';
 
+import api from '../../services/api';
+
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
@@ -51,9 +53,9 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
 
-      // await api.post('/users', data);
+      await api.post('/users', data);
 
-      // history.push('/');
+      navigation.goBack();
 
       Alert.alert(
         'Cadastro realizado!',
@@ -73,7 +75,7 @@ const SignUp: React.FC = () => {
         'Ocorreu um erro ao fazer cadastro, tente novamente.'
       );
     }
-  }, []);
+  }, [navigation]);
 
   return (
     <>
